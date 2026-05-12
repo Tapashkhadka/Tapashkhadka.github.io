@@ -26,13 +26,18 @@
         <p class="eyebrow">Browser experiment</p>
         <h1>Neon Runner</h1>
         <p class="hero-text">
-          A tiny arcade game built with plain HTML, CSS, and JavaScript. Move the square, collect blue sparks, and avoid the red chasers.
+          A small arcade corner built with plain HTML, CSS, and JavaScript. Pick a game: collect sparks, fly through gates, or play classic Pong.
         </p>
       </section>
 
       <section class="shell game-layout">
         <div class="game-card reveal">
-          <canvas id="gameCanvas" width="720" height="720" aria-label="Neon Runner game canvas"></canvas>
+          <div class="game-tabs" aria-label="Choose game">
+            <button class="active" data-game="runner" type="button">Neon Runner</button>
+            <button data-game="flappy" type="button">Orbit Flap</button>
+            <button data-game="pong" type="button">Solo Pong</button>
+          </div>
+          <canvas id="gameCanvas" width="720" height="720" aria-label="Arcade game canvas"></canvas>
           <div class="game-controls">
             <button class="btn primary" id="startBtn" type="button">Start game</button>
             <button class="btn" id="resetBtn" type="button">Reset</button>
@@ -40,14 +45,14 @@
         </div>
 
         <aside class="game-panel reveal">
-          <h2>How to play</h2>
-          <p>Use arrow keys or WASD. On mobile, drag inside the game area. Collect blue sparks. Avoid red chasers.</p>
+          <h2 id="gameTitle">Neon Runner</h2>
+          <p id="gameHelp">Use arrow keys or WASD. On mobile, drag inside the game area. Collect blue sparks. Avoid red chasers.</p>
           <div class="scoreboard">
             <div><strong id="score">0</strong><span>Score</span></div>
             <div><strong id="best">0</strong><span>Best</span></div>
             <div><strong id="level">1</strong><span>Level</span></div>
           </div>
-          <p id="gameStatus">Press Start game when you’re ready.</p>
+          <p id="gameStatus">Choose a game, then press Start game.</p>
           <a class="btn" href="index.html">Back to portfolio</a>
         </aside>
       </section>
