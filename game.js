@@ -8,6 +8,8 @@ const titleEl = document.getElementById('gameTitle');
 const helpEl = document.getElementById('gameHelp');
 const startBtn = document.getElementById('startBtn');
 const resetBtn = document.getElementById('resetBtn');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+const arcadeShell = document.getElementById('arcadeShell');
 const tabs = [...document.querySelectorAll('[data-game]')];
 
 const size = 720;
@@ -23,15 +25,15 @@ let state = {};
 const meta = {
   runner: {
     title: 'Neon Runner',
-    help: 'Use arrow keys or WASD. On mobile, drag inside the game area. Collect blue sparks. Avoid red chasers.'
+    help: 'Drag on mobile, or use arrow keys/WASD. Collect blue sparks and avoid red chasers.'
   },
   flappy: {
     title: 'Orbit Flap',
-    help: 'Press Space, click, or tap to flap upward. Fly through the glowing gates without touching them.'
+    help: 'Tap the screen to flap upward. Fly through the glowing gates without touching them.'
   },
   pong: {
     title: 'Solo Pong',
-    help: 'Use arrow keys or drag to move the paddle. Keep the ball alive as long as possible.'
+    help: 'Drag left/right on mobile, or use arrows/WASD. Keep the ball alive as long as possible.'
   }
 };
 
@@ -103,7 +105,7 @@ function resetFlappy() {
   for (let i = 0; i < 4; i++) addGate(520 + i * 230);
 }
 function addGate(x = size + 40) { const gap = 176; const top = rand(90, size - gap - 120); state.gates.push({ x, w: 70, top, gap, passed: false }); }
-function flap() { if (game === 'flappy') state.bird.vy = -360; }
+function flap() { if (game === 'flappy' && state.bird) state.bird.vy = -360; }
 function updateFlappy(dt) {
   const b = state.bird; b.vy += 780 * dt; b.y += b.vy * dt;
   state.gates.forEach((g) => g.x -= (185 + level * 12) * dt);
@@ -160,15 +162,50 @@ function start() { reset(); running = true; last = performance.now(); statusEl.t
 
 window.addEventListener('keydown', (event) => { if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','w','a','s','d'].includes(event.key)) event.preventDefault(); keys.add(event.key); if (event.key === ' ') flap(); });
 window.addEventListener('keyup', (event) => keys.delete(event.key));
+function pointerPosition(event) {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: ((event.clientX - rect.left) / rect.width) * size,
+    y: ((event.clientY - rect.top) / rect.height) * size
+  };
+}
+
 canvas?.addEventListener('click', flap);
+canvas?.addEventListener('pointerdown', (event) => {
+  event.preventDefault();
+  if (game === 'flappy') flap();
+  if (!running) return;
+  const point = pointerPosition(event);
+  if (game === 'runner' && state.player) { state.player.x = point.x; state.player.y = point.y; }
+  if (game === 'pong' && state.paddle) state.paddle.x = clamp(point.x - state.paddle.w / 2, 12, size - state.paddle.w - 12);
+});
 canvas?.addEventListener('pointermove', (event) => {
-  if (!state.player && !state.paddle) return;
-  const rect = canvas.getBoundingClientRect(); const x = ((event.clientX - rect.left) / rect.width) * size; const y = ((event.clientY - rect.top) / rect.height) * size;
-  if (game === 'runner' && event.buttons) { state.player.x = x; state.player.y = y; }
-  if (game === 'pong') state.paddle.x = clamp(x - state.paddle.w / 2, 12, size - state.paddle.w - 12);
+  if (!event.buttons || (!state.player && !state.paddle)) return;
+  event.preventDefault();
+  const point = pointerPosition(event);
+  if (game === 'runner' && state.player) { state.player.x = point.x; state.player.y = point.y; }
+  if (game === 'pong' && state.paddle) state.paddle.x = clamp(point.x - state.paddle.w / 2, 12, size - state.paddle.w - 12);
 });
 
+async function enterFullscreen() {
+  const target = arcadeShell || document.documentElement;
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else if (target.requestFullscreen) await target.requestFullscreen();
+    else if (target.webkitRequestFullscreen) target.webkitRequestFullscreen();
+  } catch (_) {
+    statusEl.textContent = 'Fullscreen may be blocked by this browser. The page is still arcade-sized.';
+  }
+}
+
+document.addEventListener('fullscreenchange', () => {
+  fullscreenBtn.textContent = document.fullscreenElement ? '×' : '⛶';
+});
+
+window.addEventListener('resize', draw);
+window.addEventListener('orientationchange', () => setTimeout(draw, 250));
 tabs.forEach((tab) => tab.addEventListener('click', () => setGame(tab.dataset.game)));
 startBtn?.addEventListener('click', start);
 resetBtn?.addEventListener('click', () => { running = false; reset(); });
+fullscreenBtn?.addEventListener('click', enterFullscreen);
 setGame('runner');

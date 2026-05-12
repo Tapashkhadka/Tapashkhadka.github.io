@@ -240,3 +240,165 @@ canvas { width: 100%; max-width: 760px; aspect-ratio: 1 / 1; display: block; mar
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }
+
+/* Fullscreen mobile arcade mode */
+.arcade-body {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+  background: #050608;
+}
+.arcade-body::before,
+.arcade-body .cursor-glow { display: none; }
+.arcade-shell {
+  height: 100dvh;
+  width: 100vw;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.arcade-stage {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 10px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(138, 180, 255, 0.16), transparent 34rem),
+    #050608;
+}
+.arcade-topbar,
+.arcade-hud,
+.arcade-bottom {
+  position: relative;
+  z-index: 2;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(8, 9, 11, 0.72);
+  backdrop-filter: blur(14px);
+}
+.arcade-topbar {
+  min-height: 50px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 7px;
+}
+.arcade-home,
+.arcade-icon-btn {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--text);
+  font-weight: 800;
+  font-size: 0.84rem;
+}
+.arcade-home { padding: 0 12px; }
+.arcade-icon-btn { width: 38px; cursor: pointer; }
+.arcade-stage .game-tabs {
+  justify-content: center;
+  margin: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+.arcade-stage .game-tabs button {
+  min-height: 36px;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+.arcade-hud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  overflow: hidden;
+}
+.arcade-hud div {
+  padding: 8px 10px;
+  text-align: center;
+  background: rgba(255,255,255,0.035);
+}
+.arcade-hud span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.arcade-hud strong {
+  display: block;
+  font-size: clamp(1.05rem, 4vw, 1.55rem);
+  line-height: 1.1;
+}
+.arcade-stage canvas {
+  align-self: stretch;
+  justify-self: center;
+  width: min(100%, calc((100dvh - 220px) * 1));
+  max-width: none;
+  height: auto;
+  max-height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.arcade-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  padding: 12px;
+}
+.arcade-bottom h1 {
+  margin: 0 0 4px;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+.arcade-bottom p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.78rem, 2.7vw, 0.94rem);
+  line-height: 1.35;
+}
+.arcade-bottom #gameStatus { margin-top: 4px; color: var(--accent); }
+.arcade-bottom .game-controls { margin: 0; flex-wrap: nowrap; }
+.arcade-bottom .btn { min-height: 42px; padding: 10px 14px; }
+.arcade-body:fullscreen .arcade-stage,
+.arcade-body:-webkit-full-screen .arcade-stage {
+  height: 100vh;
+}
+
+@media (max-width: 680px) {
+  .arcade-stage { gap: 8px; padding: 8px; }
+  .arcade-topbar { grid-template-columns: 1fr auto; }
+  .arcade-home { display: none; }
+  .arcade-stage .game-tabs { justify-content: flex-start; }
+  .arcade-bottom { grid-template-columns: 1fr; }
+  .arcade-bottom .game-controls { display: grid; grid-template-columns: 1fr 1fr; }
+  .arcade-bottom .btn { width: 100%; }
+  .arcade-stage canvas { width: min(100%, calc(100dvh - 250px)); }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .arcade-stage {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .arcade-topbar { grid-column: 1 / -1; }
+  .arcade-hud,
+  .arcade-bottom { grid-column: 2; }
+  .arcade-stage canvas { grid-row: 2 / 4; width: auto; height: 100%; }
+  .arcade-bottom { align-self: end; grid-template-columns: 1fr; }
+  .arcade-bottom .game-controls { display: grid; grid-template-columns: 1fr; }
+}
