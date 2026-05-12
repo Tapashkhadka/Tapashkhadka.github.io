@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A small HTML, CSS, and JavaScript browser game by Tapash Khadka." />
+    <meta name="theme-color" content="#08090b" />
+    <title>Game — Tapash Khadka</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html">Tapash Khadka</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#resume">Résumé</a>
+        <a href="game.html">Game</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shell game-hero reveal">
+        <p class="eyebrow">Browser experiment</p>
+        <h1>Neon Runner</h1>
+        <p class="hero-text">
+          A tiny arcade game built with plain HTML, CSS, and JavaScript. Move the square, collect blue sparks, and avoid the red chasers.
+        </p>
+      </section>
+
+      <section class="shell game-layout">
+        <div class="game-card reveal">
+          <canvas id="gameCanvas" width="720" height="720" aria-label="Neon Runner game canvas"></canvas>
+          <div class="game-controls">
+            <button class="btn primary" id="startBtn" type="button">Start game</button>
+            <button class="btn" id="resetBtn" type="button">Reset</button>
+          </div>
+        </div>
+
+        <aside class="game-panel reveal">
+          <h2>How to play</h2>
+          <p>Use arrow keys or WASD. On mobile, drag inside the game area. Collect blue sparks. Avoid red chasers.</p>
+          <div class="scoreboard">
+            <div><strong id="score">0</strong><span>Score</span></div>
+            <div><strong id="best">0</strong><span>Best</span></div>
+            <div><strong id="level">1</strong><span>Level</span></div>
+          </div>
+          <p id="gameStatus">Press Start game when you’re ready.</p>
+          <a class="btn" href="index.html">Back to portfolio</a>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer shell">
+      <span>© <span data-year></span> Tapash Khadka</span>
+      <a href="index.html">Home</a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>

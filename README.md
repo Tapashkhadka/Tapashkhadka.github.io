@@ -20,10 +20,9 @@ Then open: <http://localhost:4173>
 ## Customize before publishing
 
 - Replace placeholder email in `index.html`
-- Replace LinkedIn URL in `index.html`
 - Add a real `resume.pdf` at the repo root
-- Update project cards with real screenshots, links, and outcomes
-- Replace the placeholder testimonial with a real quote
+- Update project sections with real screenshots, links, and outcomes
+- Tune `game.html` / `game.js` if you want a harder or more polished game
 
 ## Local-model note
 

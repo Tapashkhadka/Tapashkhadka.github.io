@@ -3,183 +3,140 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Tapash Khadka — personal website, résumé, selected work, projects, skills, and contact."
-    />
-    <meta name="theme-color" content="#07111f" />
-    <title>Tapash Khadka — Builder, Operator, Technologist</title>
+    <meta name="description" content="Tapash Khadka — personal website, résumé, selected work, projects, and a small browser game." />
+    <meta name="theme-color" content="#08090b" />
+    <title>Tapash Khadka — Personal Website</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header" data-header>
-      <div class="header-inner">
-        <a class="brand" href="#top" aria-label="Tapash Khadka home">
-          <span class="brand-mark">TK</span>
-          <span>Tapash Khadka</span>
-        </a>
-        <nav class="nav" aria-label="Primary navigation">
-          <a href="#work">Work</a>
-          <a href="#projects">Projects</a>
-          <a href="#resume">Résumé</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
-          <span data-theme-icon>☾</span>
-        </button>
-      </div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Tapash Khadka home">Tapash Khadka</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Résumé</a>
+        <a href="game.html">Game</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
-    <main id="top">
-      <section class="hero section-shell">
+    <main>
+      <section class="hero shell">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Personal website · portfolio · résumé</p>
-          <h1>Hi, I’m Tapash. I build practical websites and AI workflows.</h1>
+          <p class="eyebrow">Portfolio / résumé / experiments</p>
+          <h1>Clean websites, useful automations, and practical digital systems.</h1>
           <p class="hero-text">
-            I like making technology feel useful and calm — clean websites, simple systems, and automation that helps
-            real work move faster without getting in the way.
+            I’m Tapash — I build simple, polished technology that helps real work move faster. This site is a home for my résumé,
+            selected projects, experiments, and the things I’m learning in public.
           </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects">View my work</a>
-            <a class="button secondary" href="#resume">See résumé</a>
+          <div class="actions">
+            <a class="btn primary" href="#projects">View work</a>
+            <a class="btn" href="game.html">Play the game</a>
           </div>
         </div>
-
-        <aside class="intro-card reveal" aria-label="Profile summary">
-          <div class="portrait-placeholder" aria-hidden="true">TK</div>
-          <h2>Builder with an eye for clean execution.</h2>
-          <p>
-            Focused on websites, local-first AI workflows, operations, and small-business growth systems.
-          </p>
-          <div class="quick-list">
-            <div><strong>Focus</strong><span>Web + automation</span></div>
-            <div><strong>Style</strong><span>Clean, useful, direct</span></div>
-            <div><strong>Currently</strong><span>Building portfolio-ready work</span></div>
-          </div>
-        </aside>
+        <div class="hero-panel reveal" aria-label="Quick profile">
+          <div class="panel-topline">Currently building</div>
+          <ul>
+            <li><span>01</span> Personal brand and résumé hub</li>
+            <li><span>02</span> Small-business website systems</li>
+            <li><span>03</span> Local-first AI workflows</li>
+          </ul>
+        </div>
       </section>
 
-      <section id="work" class="section-shell split-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">What I do</p>
-          <h2>Clear strategy, clean execution, and systems that keep working.</h2>
+      <section id="work" class="shell section">
+        <div class="section-title reveal">
+          <p class="eyebrow">What I care about</p>
+          <h2>Work that feels sharp, fast, and understandable.</h2>
         </div>
-        <div class="service-grid">
-          <article class="glass-card reveal">
-            <span class="card-icon">✦</span>
-            <h3>Personal & business websites</h3>
-            <p>Fast, responsive websites with strong visual identity, conversion-focused structure, and practical SEO foundations.</p>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <span>Design</span>
+            <h3>Modern websites</h3>
+            <p>Clean layouts, clear hierarchy, responsive pages, and details that make a site feel trustworthy.</p>
           </article>
-          <article class="glass-card reveal">
-            <span class="card-icon">⌘</span>
-            <h3>AI-assisted workflows</h3>
-            <p>Local-first automations, dashboards, and assistant systems designed to reduce repetitive work without wasting cloud tokens.</p>
+          <article class="feature-card reveal">
+            <span>Systems</span>
+            <h3>Automation workflows</h3>
+            <p>Practical tools that remove repetitive work, organize information, and keep projects moving.</p>
           </article>
-          <article class="glass-card reveal">
-            <span class="card-icon">↗</span>
-            <h3>Launch operations</h3>
-            <p>Project organization, deployment readiness, monitoring, documentation, and the little details that make work feel reliable.</p>
+          <article class="feature-card reveal">
+            <span>Execution</span>
+            <h3>Launch readiness</h3>
+            <p>GitHub, deployment, documentation, testing, and the unglamorous parts that make things reliable.</p>
           </article>
         </div>
       </section>
 
-      <section id="projects" class="section-shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Selected work</p>
-          <h2>Work that shows range: websites, automation, and operational tooling.</h2>
+      <section id="projects" class="shell section">
+        <div class="section-title reveal">
+          <p class="eyebrow">Selected projects</p>
+          <h2>A few areas I’m actively building around.</h2>
         </div>
-        <div class="project-grid">
-          <article class="project-card reveal">
-            <div class="project-visual visual-one"></div>
-            <div class="project-content">
-              <p class="project-type">Automation platform</p>
-              <h3>Mission Control Dashboard</h3>
-              <p>A local command center concept for monitoring AI usage, system state, and operational signals from one calm interface.</p>
-              <div class="tag-row"><span>Python</span><span>Dashboards</span><span>Local-first</span></div>
+        <div class="project-list">
+          <a class="project-row reveal" href="game.html">
+            <span class="project-number">01</span>
+            <div>
+              <h3>Browser game experiment</h3>
+              <p>A simple arcade-style JavaScript game built directly into this website.</p>
             </div>
+            <span class="arrow">→</span>
+          </a>
+          <article class="project-row reveal">
+            <span class="project-number">02</span>
+            <div>
+              <h3>Local AI workflow experiments</h3>
+              <p>Using local models for drafts, monitoring, summaries, and routine operations.</p>
+            </div>
+            <span class="arrow">↗</span>
           </article>
-          <article class="project-card reveal">
-            <div class="project-visual visual-two"></div>
-            <div class="project-content">
-              <p class="project-type">Business website</p>
-              <h3>Local service website systems</h3>
-              <p>Conversion-minded service websites with clear offers, trust signals, contact paths, and launch-ready content structure.</p>
-              <div class="tag-row"><span>HTML/CSS</span><span>SEO</span><span>Brand</span></div>
+          <article class="project-row reveal">
+            <span class="project-number">03</span>
+            <div>
+              <h3>Small-business website systems</h3>
+              <p>Fast service websites with clean offers, trust signals, and conversion-focused structure.</p>
             </div>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-visual visual-three"></div>
-            <div class="project-content">
-              <p class="project-type">AI operations</p>
-              <h3>Local model workflow experiments</h3>
-              <p>Cost-conscious AI workflows using local models for routine drafts, monitoring, summaries, and internal productivity.</p>
-              <div class="tag-row"><span>Ollama</span><span>Agents</span><span>Automation</span></div>
-            </div>
+            <span class="arrow">↗</span>
           </article>
         </div>
       </section>
 
-      <section id="resume" class="section-shell resume-section">
-        <div class="section-heading reveal">
+      <section id="resume" class="shell section resume-section">
+        <div class="section-title reveal">
           <p class="eyebrow">Résumé</p>
-          <h2>A flexible résumé section ready for real experience, links, and downloadable PDF.</h2>
+          <h2>A snapshot of the work style and stack.</h2>
         </div>
-        <div class="resume-layout">
-          <div class="timeline reveal">
-            <article>
-              <span>Current</span>
-              <h3>Builder focused on web + AI systems</h3>
-              <p>Creating polished websites, automation workflows, monitoring tools, and practical systems for business execution.</p>
-            </article>
-            <article>
-              <span>Recent</span>
-              <h3>Small-business digital presence</h3>
-              <p>Designing service pages, lead-generation flows, content structure, and operational processes for client-ready launches.</p>
-            </article>
-            <article>
-              <span>Foundation</span>
-              <h3>Operations-minded technology work</h3>
-              <p>Combining technical curiosity with execution discipline: documentation, reliability, iteration, and measurable outcomes.</p>
-            </article>
+        <div class="resume-grid">
+          <div class="resume-block reveal">
+            <h3>Focus</h3>
+            <p>Web design, automation, GitHub workflows, local AI tools, operational systems, and business-growth experiments.</p>
           </div>
-          <aside class="resume-card reveal">
-            <h3>Core stack</h3>
-            <div class="skill-list">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span><span>GitHub</span><span>Ollama</span><span>Automation</span><span>SEO</span>
-            </div>
-            <a class="button primary full" href="resume.pdf" aria-label="Download résumé PDF">Download résumé PDF</a>
-            <p class="note">Add your final résumé as <code>resume.pdf</code> in this repo when ready.</p>
-          </aside>
+          <div class="resume-block reveal">
+            <h3>Stack</h3>
+            <p>HTML, CSS, JavaScript, Python, GitHub, Ollama, automation scripts, static sites, and deployment workflows.</p>
+          </div>
+          <div class="resume-block reveal">
+            <h3>Next</h3>
+            <p>Add the final PDF résumé, real work history, project screenshots, testimonials, and links to live client work.</p>
+          </div>
         </div>
       </section>
 
-      <section class="section-shell testimonial-section">
-        <div class="quote-card reveal">
-          <p>
-            “Tapash brings the rare mix of taste, speed, and practical thinking — the work does not just look good, it is built to be useful.”
-          </p>
-          <span>Placeholder testimonial · replace with a real quote</span>
-        </div>
-      </section>
-
-      <section id="contact" class="section-shell contact-section">
-        <div class="contact-card reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Have something worth building?</h2>
-          <p>Reach out for portfolio opportunities, collaborations, client work, or thoughtful technical projects.</p>
-          <div class="contact-actions">
-            <a class="button primary" href="mailto:hello@example.com">Email me</a>
-            <a class="button secondary" href="https://github.com/Tapashkhadka">GitHub</a>
-            <a class="button secondary" href="https://www.linkedin.com/">LinkedIn</a>
-          </div>
-          <p class="note">Update the email and LinkedIn URL before publishing.</p>
+      <section id="contact" class="shell section contact-section reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Want to build something useful?</h2>
+        <p>Use this section for your real email, LinkedIn, and best contact links before sharing widely.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:hello@example.com">Email me</a>
+          <a class="btn" href="https://github.com/Tapashkhadka">GitHub</a>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="footer shell">
       <span>© <span data-year></span> Tapash Khadka</span>
-      <a href="#top">Back to top ↑</a>
+      <a href="game.html">Game</a>
     </footer>
 
     <script src="script.js"></script>

@@ -1,21 +1,12 @@
-const root = document.documentElement;
-const toggle = document.querySelector('[data-theme-toggle]');
-const icon = document.querySelector('[data-theme-icon]');
 const year = document.querySelector('[data-year]');
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-  root.classList.add('dark');
-  icon.textContent = '☀';
-}
-
-toggle?.addEventListener('click', () => {
-  const isDark = root.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  icon.textContent = isDark ? '☀' : '☾';
-});
-
 if (year) year.textContent = new Date().getFullYear();
+
+const glow = document.querySelector('.cursor-glow');
+window.addEventListener('pointermove', (event) => {
+  if (!glow) return;
+  glow.style.left = `${event.clientX}px`;
+  glow.style.top = `${event.clientY}px`;
+});
 
 const observer = new IntersectionObserver(
   (entries) => {
